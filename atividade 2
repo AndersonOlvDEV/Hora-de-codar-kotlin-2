@@ -1,0 +1,21 @@
+fun main() {
+
+    println("Por favor, digite um número qualquer:")
+
+    val input = readLine()
+    val numero = input?.toDoubleOrNull()
+
+    if (numero == null) {
+        println("Erro: A entrada '$input' não é um número válido.")
+        return // Encerra o programa
+    }
+
+    println("---")
+    when {
+        numero > 0 -> println("O número $numero é POSITIVO.")
+
+        numero < 0 -> println("O número $numero é NEGATIVO.")
+
+        else -> println("O número é ZERO.")
+    }
+}
