@@ -1,0 +1,53 @@
+import java.util.Scanner
+import java.time.Year
+
+fun main() {
+    // Cria um objeto Scanner para ler a entrada do usuário
+    val scanner = Scanner(System.`in`)
+    
+    // Obtém o ano atual do sistema
+    val anoAtual = Year.now().value
+    
+    println("--- Verificador de Voto ---")
+    print("Por favor, digite o ano de seu nascimento (ex: 1990): ")
+    
+    // Tenta ler o ano de nascimento
+    if (scanner.hasNextInt()) {
+        val anoNascimento = scanner.nextInt()
+        
+        // Validação básica para evitar anos absurdos
+        if (anoNascimento > anoAtual || anoNascimento < 1900) {
+            println("Ano de nascimento inválido.")
+            return
+        }
+        
+        // Calcula a idade da pessoa
+        val idade = anoAtual - anoNascimento
+        
+        println("\n--------------------------------------")
+        println("Ano Atual: $anoAtual")
+        println("Ano de Nascimento: $anoNascimento")
+        println("Sua idade neste ano é: **$idade anos**")
+        println("--------------------------------------")
+        
+        // --- Lógica de Voto (Considerando a regra brasileira: 16 anos) ---
+        
+        when {
+            // Voto obrigatório: 18 a 70 anos
+            idade >= 18 && idade <= 70 -> {
+                println("Você pode **VOTAR** este ano. O voto é **OBRIGATÓRIO** para você.")
+            }
+            // Voto facultativo: 16, 17 e acima de 70
+            idade >= 16 || idade > 70 -> {
+                println("Você pode **VOTAR** este ano. O voto é **FACULTATIVO** para você.")
+            }
+            // Não pode votar (menor de 16)
+            else -> {
+                println("Você **NÃO PODE** votar este ano, pois tem menos de 16 anos.")
+            }
+        }
+        
+    } else {
+        println("Entrada inválida. Por favor, digite apenas números para o ano.")
+    }
+}
