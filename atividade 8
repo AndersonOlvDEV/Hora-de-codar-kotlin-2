@@ -1,0 +1,53 @@
+import java.util.Scanner
+
+fun main() {
+
+    val scanner = Scanner(System.`in`)
+
+    val numeros = mutableListOf<Double>()
+
+    var todosValidos = true
+
+    println("--- Calculadora de Média Condicional ---")
+    println("Por favor, digite 4 números. Eles só serão considerados se forem maiores que 0 e menores que 10.")
+
+    for (i in 1..4) {
+        print("Digite o ${i}º número: ")
+
+        if (scanner.hasNextDouble()) {
+            val num = scanner.nextDouble()
+
+            if (num > 0 && num < 10) {
+                numeros.add(num)
+            } else {
+                println("O número $num não é válido (precisa ser > 0 e < 10).")
+                todosValidos = false
+                break
+            }
+        } else {
+            println("Entrada inválida. Por favor, digite apenas números.")
+            todosValidos = false
+            break
+        }
+    }
+
+    if (todosValidos) {
+        val soma = numeros.sum()
+        val media = soma / numeros.size
+
+        println("\n--------------------------------------")
+        println("Números informados: $numeros")
+        println("Soma: %.2f".format(soma))
+        println("Média calculada: **%.2f**".format(media))
+        println("--------------------------------------")
+
+        if (media > 5) {
+            println("Parabéns! **Você passou no teste**.")
+        } else {
+            println("Que pena. **Tente novamente**.")
+        }
+    } else {
+        println("\nNão foi possível calcular a média, pois nem todos os 4 números foram válidos (maiores que 0 e menores que 10) ou a entrada foi inválida.")
+        println("Por favor, **tente novamente** com os números corretos.")
+    }
+}
