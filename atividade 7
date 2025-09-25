@@ -1,0 +1,32 @@
+fun main() {
+    println("--- Soma de Números Inferiores a 72 ---")
+
+    val todosOsNumeros = mutableListOf<Double>()
+
+    var somaValoresInferiores = 0.0
+
+    val quantidade = 6
+
+    for (i in 1..quantidade) {
+        print("Digite o ${i}º número: ")
+
+        val entrada = readLine()?.toDoubleOrNull()
+
+        if (entrada == null) {
+            println("\nErro: Entrada inválida. Por favor, digite um número real.")
+            return
+        }
+
+        todosOsNumeros.add(entrada)
+
+        if (entrada < 72) {
+            somaValoresInferiores += entrada
+        }
+    }
+
+    println("\n--- Resultados ---")
+
+    println("Todos os números informados foram: ${todosOsNumeros.joinToString(separator = ", ")}")
+    
+    println("A soma dos valores que são estritamente inferiores a 72 é: $somaValoresInferiores")
+}
