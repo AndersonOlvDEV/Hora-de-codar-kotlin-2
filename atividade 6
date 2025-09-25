@@ -1,0 +1,37 @@
+fun main() {
+    println("--- Análise de Quatro Valores ---")
+
+    val valores = mutableListOf<Double>()
+
+    val quantidade = 4
+
+    for (i in 1..quantidade) {
+        print("Digite o ${i}º valor: ")
+
+        val entrada = readLine()?.toDoubleOrNull()
+
+        if (entrada == null) {
+            println("\nErro: Entrada inválida. Por favor, digite um número real.")
+            return
+        }
+
+        valores.add(entrada)
+    }
+
+    val primeiroValor = valores[0]
+
+    val ultimoValor = valores.last()
+
+    val maiorValor = valores.maxOrNull()
+
+    println("\n--- Resultados Solicitados ---")
+
+    println("Os valores informados foram: ${valores.joinToString(separator = ", ")}")
+    println("-----------------------------")
+    println("O PRIMEIRO valor informado foi: $primeiroValor")
+    println("O ÚLTIMO valor informado foi: $ultimoValor")
+    
+    if (maiorValor != null) {
+        println("O MAIOR valor entre todos é: $maiorValor")
+    }
+}
