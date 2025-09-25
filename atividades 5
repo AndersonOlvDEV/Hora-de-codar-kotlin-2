@@ -1,0 +1,32 @@
+fun main() {
+    println("--- Cálculo da Média Aritmética de 6 Valores ---")
+
+    val numeros = mutableListOf<Double>()
+
+    var soma = 0.0
+
+    val quantidade = 6
+
+    for (i in 1..quantidade) {
+        print("Digite o ${i}º número: ")
+
+        val entrada = readLine()?.toDoubleOrNull()
+
+        if (entrada == null) {
+            println("\nErro: Entrada inválida. Por favor, digite um número real.")
+            return
+        }
+
+        numeros.add(entrada)
+        soma += entrada
+    }
+
+    val media = soma / quantidade
+
+    println("\n--- Resultado ---")
+
+    println("Os números informados são: ${numeros.joinToString(separator = ", ")}")
+
+    println("A soma total é: $soma")
+    println("A média aritmética dos 6 valores é: $media")
+}
