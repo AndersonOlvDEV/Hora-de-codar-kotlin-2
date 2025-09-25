@@ -1,0 +1,26 @@
+fun main() {
+    println("Por favor, digite o primeiro número:")
+    val numero1 = readLine()?.toDoubleOrNull()
+    
+    println("Por favor, digite o segundo número:")
+    val numero2 = readLine()?.toDoubleOrNull()
+    
+    if (numero1 == null || numero2 == null) {
+        println("Erro: Uma ou ambas as entradas não são números válidos.")
+        return
+    }
+    
+    val maiorNumero: Double
+    
+    if (numero1 > numero2) {
+        maiorNumero = numero1
+    } else if (numero2 > numero1) {
+        maiorNumero = numero2
+    } else {
+        println("Os dois números são iguais: $numero1")
+        return
+    }
+
+    println("---")
+    println("O maior número é: $maiorNumero")
+}
