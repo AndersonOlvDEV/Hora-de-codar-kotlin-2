@@ -1,0 +1,31 @@
+fun main() {
+    println("--- Soma dos 2 Maiores Números ---")
+
+    val numeros = mutableListOf<Double>()
+
+    for (i in 1..3) {
+        print("Por favor, digite o ${i}º número: ")
+
+        val entrada = readLine()?.toDoubleOrNull()
+
+        if (entrada == null) {
+            println("\nErro: Entrada inválida. Por favor, digite um número real.")
+            return
+        }
+        numeros.add(entrada)
+    }
+
+    val numerosOrdenados = numeros.sorted()
+
+    val maior1 = numerosOrdenados[2]
+
+    val maior2 = numerosOrdenados[1]
+
+    val somaDosDoisMaiores = maior1 + maior2
+    
+    println("\n--- Resultado ---")
+    println("Os números digitados foram: ${numeros.joinToString()}")
+    println("O maior número é: $maior1")
+    println("O segundo maior número é: $maior2")
+    println("A soma dos 2 maiores números é: $maior1 + $maior2 = $somaDosDoisMaiores")
+}
