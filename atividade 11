@@ -1,0 +1,78 @@
+import java.util.Scanner
+
+fun main() {
+    // Cria um objeto Scanner para ler a entrada do usuário
+    val scanner = Scanner(System.`in`)
+
+    println("--- Micro Calculadora Kotlin ---")
+
+    // 1. Entrada do Primeiro Valor (Int)
+    print("Digite o primeiro número inteiro: ")
+    val num1: Int = try {
+        scanner.nextInt()
+    } catch (e: Exception) {
+        println("Erro: Entrada inválida. Por favor, digite um número inteiro.")
+        return
+    }
+
+    // 2. Entrada do Segundo Valor (Int)
+    print("Digite o segundo número inteiro: ")
+    val num2: Int = try {
+        scanner.nextInt()
+    } catch (e: Exception) {
+        println("Erro: Entrada inválida. Por favor, digite um número inteiro.")
+        return
+    }
+
+    // 3. Entrada da Operação
+    println("\nEscolha a operação:")
+    println("1 - Adição (+)")
+    println("2 - Subtração (-)")
+    println("3 - Divisão (/)")
+    println("4 - Multiplicação (*)")
+    print("Digite o código da operação (1, 2, 3 ou 4): ")
+
+    val operacao: Int = try {
+        scanner.nextInt()
+    } catch (e: Exception) {
+        println("Erro: Entrada de operação inválida. Digite 1, 2, 3 ou 4.")
+        return
+    }
+
+    // Variável para armazenar o resultado. Usamos Double para garantir precisão na divisão.
+    val resultado: Double
+
+    // 4. Lógica de Cálculo (usando 'when')
+    when (operacao) {
+        1 -> { // Adição
+            resultado = (num1 + num2).toDouble()
+            println("\nResultado da Adição:")
+            println("$num1 + $num2 = **%.2f**".format(resultado))
+        }
+        2 -> { // Subtração
+            resultado = (num1 - num2).toDouble()
+            println("\nResultado da Subtração:")
+            println("$num1 - $num2 = **%.2f**".format(resultado))
+        }
+        3 -> { // Divisão
+            // Lógica de segurança: verifica divisão por zero
+            if (num2 == 0) {
+                println("\nErro: Não é possível dividir por zero!")
+                return
+            }
+            // Faz a divisão, garantindo que o resultado seja Double
+            resultado = num1.toDouble() / num2.toDouble()
+            println("\nResultado da Divisão:")
+            println("$num1 / $num2 = **%.2f**".format(resultado))
+        }
+        4 -> { // Multiplicação
+            resultado = (num1 * num2).toDouble()
+            println("\nResultado da Multiplicação:")
+            println("$num1 * $num2 = **%.2f**".format(resultado))
+        }
+        else -> {
+            // Caso o usuário digite um código diferente de 1, 2, 3 ou 4
+            println("\nErro: Código de operação **$operacao** inválido. Tente novamente.")
+        }
+    }
+}
